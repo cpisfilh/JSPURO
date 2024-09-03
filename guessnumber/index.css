@@ -1,0 +1,20 @@
+body{
+    color: white;
+    background-color: black;
+  }
+  
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    width: 90px;
+    height: 90px;
+    font-size: x-large;
+    text-align: center;
+  }
+  
+  button {
+    margin-top: 10px;
+    width: 100px;
+  }
