@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --primary-color: #4caf50;
+        --secondary-color: #008cba;
+        --warning-color: #ff9800;
+        --danger-color: #f44336;
+        --button-padding: 10px 20px;
+        --button-radius: 12px;
+      }
+      body {
+        font-size: 200px;
+        padding: 0;
+        margin: 0;
+        font-family: "Courier New", Courier, monospace;
+        background-color: black;
+        color: white;
+      }
+
+      .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Botones con estilos adaptativos */
+      button {
+        background-color: var(--primary-color);
+        border: none;
+        color: white;
+        padding: var(--button-padding);
+        font-size: x-large;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: var(--button-radius);
+        transition: transform 0.5s;
+      }
+
+      button:hover {
+        transform: scale(1.2);
+      }
+
+      /* Estilos específicos para cada botón */
+      #startButton {
+        background-color: var(--primary-color);
+      }
+
+      #stopButton {
+        background-color: var(--warning-color);
+      }
+
+      #resetButton {
+        background-color: var(--danger-color);
+      }
+
+      button:hover {
+        background-color: hsl(0, 0%, 40%);
+      }
+
+      .container-svg {
+        margin: 0;
+        width: 25px;
+        height: 25px;
+      }
+
+      svg {
+        width: 25px;
+        height: 25px;
+        padding: 0;
+      }
+    </style>
+    <script type="module">
+      document.addEventListener("DOMContentLoaded", () => {
+        const $ = (el) => document.querySelector(el);
+
+        const $info = $(".info");
+        const $startBtn = $("#startButton");
+        const $stopBtn = $("#stopButton");
+        const $resetBtn = $("#resetButton");
+        let tiempo = "00:00";
+        let interval;
+
+        //mostrar tiempo
+        const showTime = () => {
+          $info.textContent = tiempo;
+        };
+
+        const updateTime = () => {
+          const [minutes, seconds] = tiempo.split(":");
+          let newTime;
+          if (Number(seconds) < 59) {
+            newTime = `${minutes}:${(Number(seconds) + 1)
+              .toString()
+              .padStart(2, 0)}`;
+          } else {
+            newTime = `${(Number(minutes) + 1).toString().padStart(2, 0)}:00`;
+          }
+
+          tiempo = newTime;
+          showTime();
+        };
+
+        //Iniciar
+        $startBtn.addEventListener("click", () => {
+          if (!interval) interval = setInterval(updateTime, 1000);
+        });
+
+        //Detener
+        $stopBtn.addEventListener("click", () => {
+          clearInterval(interval);
+          interval = null;
+        });
+
+        //Resetear
+        $resetBtn.addEventListener("click", () => {
+          clearInterval(interval);
+          interval = null;
+          tiempo = "00:00";
+          showTime();
+        });
+
+        showTime();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="reloj">
+        <span class="info"></span>
+        <div class="buttons">
+          <button type="button" id="startButton">
+            <div class="container-svg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z"
+                />
+              </svg>
+            </div>
+          </button>
+          <button type="button" id="stopButton">
+            <div class="container-svg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 9.563C9 9.252 9.252 9 9.563 9h4.874c.311 0 .563.252.563.563v4.874c0 .311-.252.563-.563.563H9.564A.562.562 0 0 1 9 14.437V9.564Z"
+                />
+              </svg>
+            </div>
+          </button>
+          <button type="button" id="resetButton">
+            <div class="container-svg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
