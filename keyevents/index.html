@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+          }
+          .container{
+            display: grid;
+            grid-template-columns: 60px 60px 60px 60px;
+            grid-template-rows: 60px 60px 60px 60px;
+            border: 2px solid black
+          }
+          span{
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .coordenadas{
+            margin-left: 20px;
+          }
+          
+          .seleccionado{
+            background-color:rgb(24,15,166);
+          }
+    </style>
+    <script type="module">
+      document.addEventListener("DOMContentLoaded", () => {
+        const $ = (el) => document.querySelector(el);
+        const $$ = (el) => document.querySelectorAll(el);
+
+        const $contenedor = $(".container");
+        const $coordcontainer = $(".coordenadas");
+
+        let positionX = 0;
+        let positionY = 0;
+        const arr = [
+          [0, 1, 2, 3],
+          [0, 1, 2, 3],
+          [0, 1, 2, 3],
+          [0, 1, 2, 3],
+        ];
+
+        //Iniciar ui
+        const uistart = () => {
+          for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+              const cuadro = document.createElement("span");
+              cuadro.textContent = "";
+              cuadro.dataset.posx = i;
+              cuadro.dataset.posy = j;
+              if (i == 0 && j == 0) cuadro.classList.add("seleccionado");
+              $contenedor.appendChild(cuadro);
+            }
+          }
+          cordShow();
+        };
+
+        document.body.addEventListener("keydown", (e) => {
+          const elementoActual = $(".seleccionado");
+          if (e.key === "ArrowDown") {
+            // Mover hacia abajo
+            if (positionX !== 3) {
+              positionX++;
+              elementoActual.classList.remove("seleccionado");
+              $$("span").forEach((el) => {
+                const nuevaposx = el.dataset.posx;
+                const nuevaposy = el.dataset.posy;
+                if (nuevaposx == positionX && nuevaposy == positionY) {
+                  el.classList.add("seleccionado");
+                }
+              });
+            }
+          } else if (e.key === "ArrowUp") {
+            // Mover hacia arriba
+            if (positionX !== 0) {
+              positionX--;
+              elementoActual.classList.remove("seleccionado");
+              $$("span").forEach((el) => {
+                const nuevaposx = el.dataset.posx;
+                const nuevaposy = el.dataset.posy;
+                if (nuevaposx == positionX && nuevaposy == positionY) {
+                  el.classList.add("seleccionado");
+                }
+              });
+            }
+          } else if (e.key === "ArrowRight") {
+            // Mover hacia derecha
+            if (positionY !== 3) {
+              positionY++;
+              elementoActual.classList.remove("seleccionado");
+              $$("span").forEach((el) => {
+                const nuevaposx = el.dataset.posx;
+                const nuevaposy = el.dataset.posy;
+                if (nuevaposx == positionX && nuevaposy == positionY) {
+                  el.classList.add("seleccionado");
+                }
+              });
+            }
+          } else if (e.key === "ArrowLeft") {
+            // Mover hacia derecha
+            if (positionY !== 0) {
+              positionY--;
+              elementoActual.classList.remove("seleccionado");
+              $$("span").forEach((el) => {
+                const nuevaposx = el.dataset.posx;
+                const nuevaposy = el.dataset.posy;
+                if (nuevaposx == positionX && nuevaposy == positionY) {
+                  el.classList.add("seleccionado");
+                }
+              });
+            }
+          }
+          cordShow();
+        });
+
+        //mostrar coordenadas
+        const cordShow = () => {
+          $coordcontainer.textContent = `fila: ${positionX+1} columna: ${positionY+1}`;
+        };
+
+        uistart();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container"></div>
+    <div class="coordenadas"></div>
+  </body>
+</html>
