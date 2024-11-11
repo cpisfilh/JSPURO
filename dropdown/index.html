@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .button {
+        background-color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .dropdown {
+        width: inherit;
+      }
+
+      .items-dropdown {
+        width: auto;
+        text-align: center;
+        max-height: 0;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
+      }
+
+      .items-dropdown.show {
+        max-height: 100px;
+        display: block;
+        border: 2px solid black;
+      }
+
+      .items-dropdown > * {
+        cursor: pointer;
+      }
+
+      .items-dropdown > *:hover {
+        background-color: gray;
+      }
+
+      .dropdown-container {
+        width: 200px;
+      }
+    </style>
+    <script type="module" src="./dropdown.js"></script>
+  </head>
+  <body>
+    <div class="dropdown-container">
+      <button class="button dropdown" type="button">
+        <span id="dropdown-text">Selecciona un item...</span>
+        <img src="./flecha.png" width="10" height="10" alt="flecha" />
+      </button>
+      <div class="items-dropdown">
+        <div>Selecciona un item...</div>
+        <div data-value="1">OPCION1</div>
+        <div data-value="2">OPCION2</div>
+        <div data-value="3">OPCION3</div>
+        <div data-value="4">OPCION4</div>
+        <div data-value="5">OPCION5</div>
+        <div data-value="6">OPCION6</div>
+        <div data-value="7">OPCION7</div>
+        <div data-value="8">OPCION8</div>
+        <div data-value="9">OPCION9</div>
+        <div data-value="10">OPCION10</div>
+      </div>
+    </div>
+  </body>
+</html>
