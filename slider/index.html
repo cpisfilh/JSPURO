@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      .container {
+        background-color: black;
+        width: 150px;
+        height: 150px;
+        position: relative;
+      }
+
+      .container > div {
+        background-color: white;
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        display: none;
+        
+      }
+
+      .container > div:first-child {
+        display: block; /* Muestra el primer elemento por defecto */
+      }
+
+      #button-back {
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        transform: translate(-20%, -50%);
+        cursor: pointer;
+      }
+
+      #button-next {
+        position: absolute;
+        top: 50%;
+        right: 0%;
+        transform: translate(20%, -50%);
+        cursor: pointer;
+      }
+
+      .item-slider{
+        text-align: center;
+        line-height: 150px;
+      }
+    </style>
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item-slider" data-cpslide="1">
+        Item1
+      </div>
+      <div class="item-slider" data-cpslide="2">
+        Item2
+      </div>
+      <div class="item-slider" data-cpslide="3">
+        Item3
+      </div>
+      <button id="button-back" class="indicator" type="button"><</button>
+      <button id="button-next" class="indicator" type="button">></button>
+    </div>
+    <span id="size" style="color: white"></span>
+  </body>
+</html>
