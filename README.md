@@ -7,3 +7,4 @@ Proyectos con js puro para practicar
 5) Keyboard events
 6) Basic Dropdown
 7) Basic Slider
+8) Form Validation
