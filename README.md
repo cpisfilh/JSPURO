@@ -8,3 +8,4 @@ Proyectos con js puro para practicar
 6) Basic Dropdown
 7) Basic Slider
 8) Form Validation
+9) Change Color

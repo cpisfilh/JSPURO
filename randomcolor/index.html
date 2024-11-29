@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module">
+
+      function generarColorAleatorio() {
+        const randomNumber = Math.floor(Math.random() * 16777216); // Rango de 0 a 16777215
+        const hexColor = randomNumber.toString(16); // Convertir a base 16
+        return `#${hexColor.padStart(6, '0')}`; // Asegurar 6 caracteres con ceros a la izquierda
+      }
+      
+      //cambiar el valor de la variable y reflejar el nuevo color en el DOM
+      function changeColor() {
+        color = generarColorAleatorio();
+        console.log(color);
+        body.style.backgroundColor = color;
+      }
+
+      //Estado inicial
+      let color = "#ddddd2";
+      const body = document.querySelector("body");
+      body.style.backgroundColor = color;
+
+      //traer el botón y ejecutar la función changeColor
+      document
+        .getElementById("changeColorBtn")
+        .addEventListener("click", changeColor);
+
+    </script>
+  </head>
+  <body>
+    <button id="changeColorBtn" type="button">Cambiar color</button>
+    <h1 id="currentColor"></h1>
+  </body>
+</html>
