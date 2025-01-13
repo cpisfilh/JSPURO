@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        body{
+            margin: 0;
+        }
+
+        .section{
+            border: 2px solid black;
+            height: 1000px;
+        }
+
+        ul{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap:100px;
+            margin: 0;
+            height: 100%;
+        }
+
+        nav{
+            background-color: black;
+            color: white;
+            height: 50px;
+            position: fixed;
+            width: 100vw;
+            opacity: 0.5;
+        }
+    </style>
+    <script src="index.js" type="module"></script>
+</head>
+<body>
+    <div class="container">
+    <nav class="navbar">
+        <ul>
+            <li>section1</li>
+            <li>section2</li>
+            <li>section3</li>
+        </ul>
+    </nav>
+    <div class="section" id="section1">
+        <h1>Section 1</h1>
+    </div>
+    <div class="section" id="section2">
+        <h1>Section 2</h1>
+    </div>
+    <div class="section" id="section3">
+        <h1>Section 3</h1>
+    </div>
+    </div>
+</body>
+</html>

@@ -10,3 +10,4 @@ Proyectos con js puro para practicar
 8) Form Validation
 9) Change Color
 10) Memory Game
+11) Intersection Observer
